@@ -15,9 +15,9 @@ class CarCatalog:
       print(f"Car Brand: {self.price}")
       print("----------------------------")
 
-
-karthik_car_details = CarCatalog("Honda", "City", "red", "beige", "25000000")
-
-arjun_car_details = CarCatalog("BMW", "X3", "black", "beige", "50000000")
-karthik_car_details.show_selected_car__details('Karthik')
-arjun_car_details.show_selected_car__details('Arjun')
+# Only runs when this file is executed directly
+  karthik_car_details = CarCatalog("Honda", "City", "red", "beige", "25000000")
+  arjun_car_details = CarCatalog("BMW", "X3", "black", "beige", "50000000")
+  
+  karthik_car_details.show_selected_car__details('Karthik')
+  arjun_car_details.show_selected_car__details('Arjun')
