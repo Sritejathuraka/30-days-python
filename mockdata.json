@@ -1,0 +1,67 @@
+{
+  "pantry": [
+    {
+      "id": "1",
+      "category": "lentilsList",
+      "items": {
+        "toorDaal": 2,
+        "yellowDaal": 3,
+        "moongDaal": 1
+      }
+    },
+    {
+      "id": "2",
+      "category": "spices",
+      "items": {
+        "chilliPowder": "500 grams",
+        "turmeric": "200 grams",
+        "coriander": "250 grams"
+      }
+    },
+    {
+      "id": "3",
+      "category": "snacks",
+      "items": {
+        "biscuits": "3 packs",
+        "cookies": "2 packs",
+        "chips": "4 packs"
+      }
+    },
+    {
+      "id": "4",
+      "category": "grains",
+      "items": {
+        "rice": "5 kg",
+        "wheatFlour": "3 kg",
+        "millets": "2 kg"
+      }
+    },
+    {
+      "id": "5",
+      "category": "dryFruits",
+      "items": {
+        "almonds": "500 grams",
+        "cashews": "400 grams",
+        "raisins": "300 grams"
+      }
+    },
+    {
+      "id": "7",
+      "category": "beverages",
+      "items": {
+        "tea": "500 grams",
+        "coffee": "250 grams",
+        "greenTea": "100 grams"
+      }
+    },
+    {
+      "id": "8",
+      "category": "vegetables",
+      "items": {
+        "tomatoes": "500 grams",
+        "carrots": "250 grams",
+        "green pepper": "100 grams"
+      }
+    }
+  ]
+}
