@@ -1,0 +1,18 @@
+Welcome to the world of Python programming!
+
+Python is a versatile language used for data analysis, AI, web development, automation, and more.
+
+    This paragraph is indented to show code-like formatting.
+    You can also work with files, databases, and APIs.
+
+Line-by-line reading is useful when:
+- You're processing logs
+- Reading configuration files
+- Handling large datasets line by line
+
+Each line can be read, analyzed, or even transformed.
+
+Empty lines are preserved.
+
+End of file.
+
