@@ -1,0 +1,116 @@
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+
+# CORE DATA STRUCTURE
+nArry = np.array([1, 6, 4, 2])
+n2Arry = np.array([[1, 6, 4, 2],
+                   [5, 7, 3, 12]])
+pandas_series = pd.Series(nArry)
+##print ("PANDAS_SERIES", pandas_series)
+pandas_data_frame = pd.DataFrame(n2Arry, columns=["A", "B", "C", "D"], index=["X", "Y"])
+##print (pandas_data_frame)
+
+
+# Data Input & Output
+df_from_dict = pd.DataFrame({
+    "order_id": [1, 2, 3],
+    "product": ["apple", "mango", "banana"],
+    "qty": [2, 1, 4],
+    "price": [10.0, 20.0, 10.0],
+})
+
+df_from_dict.to_csv("fruits.csv", index=False)
+fruits_data = pd.read_csv("fruits.csv")
+
+#INSPECTING DATA
+
+#print ("---------HEAD---------")
+#print (fruits_data .head())        # first 5
+#print ("---------TAIL---------")
+#print (fruits_data .tail(1))       # last 2
+#print ("---------INFO---------")
+#print (fruits_data .info())        # dtypes + non-null counts
+#print ("---------DESCRIBE---------")
+#print (fruits_data .describe())  # stats for numeric cols
+#print ("---------SHAPE---------")
+#print (fruits_data .shape)         # (rows, cols)
+#print ("---------DTYPE---------")
+#print (fruits_data .dtypes)        # dtype per column
+#print (list(fruits_data .columns)) # column names
+
+#INdexing & Selection
+
+# Select columns
+#print("------Select column 1 -------------")
+#print(fruits_data["qty"])
+#print("------Select column 2 -------------")
+#print(fruits_data[["product", "qty"]])
+
+
+# Select rows
+#print("------Select row 1 -------------")
+#print(fruits_data.loc[fruits_data["qty"] >= 2, ["order_id", "product", "qty"]])  # label/boolean
+#print("------Select row 2 -------------")
+#print(fruits_data.iloc[0:2, 0:4])   # by integer position
+
+
+# Introduce a missing value for demo
+
+#fruits_data.loc[1, "qty"] = np.nan
+#fruits_data.loc[2, "qty"] = np.nan
+#print("Checking NAN",fruits_data.isna().sum())
+
+#fruits_data["qty"] = fruits_data["qty"].fillna(7).astype(int)
+#drop_demo = fruits_data.dropna(subset=["qty"])
+#print("After Drop NA",drop_demo)
+
+renamed_data = fruits_data.rename(columns={"qty": "Quantity"})
+#print("Renamed_Data", renamed_data)
+
+
+#Basic Operators
+
+df_ops = renamed_data.copy()
+df_ops["revenue"] = df_ops["Quantity"] * df_ops["price"]
+df_ops["mango_product_check"] = (df_ops["product"] == "mango")
+sorted_data =  df_ops.sort_values(["Quantity"],ascending=[True]).head()
+
+#print(df_ops)
+#print(sorted_data)
+
+#Aggregation & Grouping
+grouping_data = pd.DataFrame({
+    "order_id": [1,2,3,4],
+    "product":  ["apple","mango","banana","mango"],
+    "Quantity": [2,1,4,2],
+    "price":    [10.0,20.0,10.0,30.0],
+})
+grouping_data["revenue"] = grouping_data["Quantity"] * grouping_data["price"]
+
+by_product = (grouping_data.groupby("product", as_index=False)
+              .agg(avg_revenue=("revenue", "mean"),
+                   order=("order_id", "count"),
+                   qty_sum=("Quantity", sum)))
+
+#print(by_product)
+
+#Merging
+
+products = pd.DataFrame({
+    "product": ["apple", "carrot", "icecream"],
+    "price": ["$2.00", "$1.00", "$3.99"]
+})
+products1 = pd.DataFrame({
+    "product": ["apple", "carrot", "icecream"],
+    "category": ["fruit", "vegetable", "dessert"]
+})
+merged = products.merge(products1, on="product", how="left")
+#print(products)
+#print(products1)
+#print(merged.head())
+
+#Exporting & Saving Work
+
+#merged.to_excel("my_product_details.xlsx", index=False)
+
